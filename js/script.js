@@ -6,7 +6,7 @@ FSJS project 2 - List Filter and Pagination
 
 
 
-const studentList = document.querySelector('.student-list');
+const studentList = document.querySelectorAll('.student-list');
 const studentsPerPage = 10;
 
 
@@ -17,10 +17,10 @@ const showPage = (list, page) => {
 
    for (let i = 0; i < studentList.length; i += 1) {
       if (i >= startIndex && i < endIndex) {
-         studentList.style.display = 'block';
+         list[i].style.display = 'block';
 
       } else {
-         studentList.style.display = 'none';
+         list[i].style.display = 'none';
 
       }
 
@@ -43,12 +43,25 @@ const appendPageLinks = (list) => {
          let li = document.createElement('li');
          let a = document.createElement('a');
          a.href = '#';
-      
+         a.textContent = i + 1;
+         li.appendChild(a);
+         ul.appendChild(li);
+
+         if (i === 1) {
+            a.className = 'active';
+
+         }
+
+         a.addEventListener ('click', (e) => {
 
 
+         })
+   
       }
+
       
-}
+   }
+
 
 
 
@@ -58,9 +71,6 @@ const appendPageLinks = (list) => {
 
 showPage(studentList, 1);
 appendPageLinks(studentList);
-
-
-
 
 
 
