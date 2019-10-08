@@ -6,7 +6,7 @@ FSJS project 2 - List Filter and Pagination
 
 
 
-const studentList = document.querySelectorAll('.student-list');
+const studentList = document.querySelectorAll('.student-item');
 const studentsPerPage = 10;
 
 
@@ -17,7 +17,7 @@ const showPage = (list, page) => {
 
    for (let i = 0; i < studentList.length; i += 1) {
       if (i >= startIndex && i < endIndex) {
-         list[i].style.display = 'block';
+         list[i].style.display = '';
 
       } else {
          list[i].style.display = 'none';
@@ -39,34 +39,42 @@ const appendPageLinks = (list) => {
       let ul = document.createElement('ul');
       div.appendChild(ul);
 
-      for (let i = 0; i < numberOfPages; i++) {
+      for (let i = 0; i < numberOfPages; i += 1) {
          let li = document.createElement('li');
          let a = document.createElement('a');
          a.href = '#';
          a.textContent = i + 1;
          li.appendChild(a);
          ul.appendChild(li);
+         
+        
+         
 
-         if (i === 1) {
-            a.className = 'active';
-
-         }
-
-         a.addEventListener ('click', (e) => {
+        
+       
 
 
-         })
+        
+        const activeC = document.createElement('activeC');
+        activeC.className = ('active');
+        let firstListItem = activeC.firstElementChild;
+
+         a.addEventListener('click', (e) => {         
+            for(let i = 0 ; i < activeC.childrenlength; i++){
+            activeC.firstElementChild[i].firstElementChild.length = '';
+                 
+              
+            }
+            e.target.className = 'active';
+            showPage(studentList, a + 1);
+         });
+      }
+      
    
       }
 
       
-   }
 
-
-
-
-   
-   
 
 
 showPage(studentList, 1);
